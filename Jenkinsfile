@@ -1,34 +1,31 @@
 pipeline {
   agent any
   stages {
-    stage ("stage 1") {
+    stage("stage 1") {
       steps {
         bat "cd"
       }
     }
-    stage ("stage 2") {
+    stage("stage 2") {
       steps {
-        bat "date /t"
+        bat "date /t && time /t"
       }
     }
-    stage ("stage 3") {
+    stage("stage 3") {
       steps {
         bat "dir"
       }
     }
   }
   post {
-      always {
-        // Archive test report
-        echo "I will always run"
-      }
-      success {
-        // Only if the test passes
-        echo "Execution successfull"
-      }
-      failure {
-        // If tests fails
-        echo "Execution failed"
-      }
+    always {
+      echo "I will always run"
     }
+    success {
+      echo "Execution successful"
+    }
+    failure {
+      echo "Execution failed"
+    }
+  }
 }
