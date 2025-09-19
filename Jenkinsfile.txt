@@ -3,17 +3,17 @@ pipeline {
   stages {
     stage ("stage 1") {
       steps {
-        bat "pwd"
+        bat "cd"
       }
     }
     stage ("stage 2") {
       steps {
-        bat "date"
+        bat "date /t"
       }
     }
     stage ("stage 3") {
       steps {
-        bat "ls"
+        bat "dir"
       }
     }
   }
