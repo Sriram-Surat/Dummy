@@ -1,0 +1,34 @@
+pipeline {
+  agent any
+  stages {
+    stage ("stage 1") {
+      steps {
+        bat "pwd"
+      }
+    }
+    stage ("stage 2") {
+      steps {
+        bat "date"
+      }
+    }
+    stage ("stage 3") {
+      steps {
+        bat "ls"
+      }
+    }
+  }
+  post {
+      always {
+        // Archive test report
+        echo "I will always run"
+      }
+      success {
+        // Only if the test passes
+        echo "Execution successfull"
+      }
+      failure {
+        // If tests fails
+        echo "Execution failed"
+      }
+    }
+}
